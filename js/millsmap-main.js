@@ -65,6 +65,7 @@ function calcPropRadius(attValue){
 function pointToLayer(feature, latlng, attributes){
     //determine hwhitch attribute to visual-eyes w/ proportional symbolz
     var attribute = attributes[0];
+    console.log(attributes[0])
     //cre8 marker optionz
     var options = {
         fillColor: "#ff7800",

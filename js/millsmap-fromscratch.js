@@ -13,4 +13,29 @@ function createMap(){
     //call the uh, getData fxn
     getData(map);
 };
+
+function getData(){
+
+    fetch("data/mills-example-places.geojson") 
+    .then(function(response){
+        return response.json();
+})
+    .then(function(json){
+        L.geoJSON(json),addTo(map);
+        //doin some attribute stuff with arrays or something
+        //var attributes = processData(json);
+        //console.log(attributes);
+    })
+};
+
+
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded',createMap)
