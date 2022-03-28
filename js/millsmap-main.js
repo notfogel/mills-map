@@ -121,7 +121,7 @@ function createTitle(){
 			
 		var title = L.DomUtil.create('div');
 		title.id = "my_title";
-		title.innerHTML = "<strong>Pieces of Anti-Trans Legislation Proposed by U.S. State, 2016-2022 <br> by Sammy Fogel</strong>"
+		title.innerHTML = "<strong>Wisconsin Folksong Collection, 1937-1946 <br> by Sammy Fogel</strong>"
         
 		return title;
 		},
@@ -229,7 +229,7 @@ function createLegend(attributes){
             //cre8 control container w/ a particular clasz name
             var container = L.DomUtil.create('div', 'legend-control-container');
             
-            container.innerHTML = '<p class="temporal-legend">Number of Anti-Trans Bills in  <span class="year">2022</span></p>';
+            container.innerHTML = '<p class="temporal-legend">Number of Entries</p>';
           
             //svg time baby!!!
             var svg = '<svg id="attribute-legend" width="130px" height="130px">';
@@ -286,8 +286,8 @@ function PopupContent(properties, attribute){
 
 function getData(){
 
-
-    fetch("data/antitranslaws_15gap_17gap.geojson") //this will link to my new geojson, but lots of "State" language which need 2b converted to current context
+    //fetch("data/mills-example-places.geojson") 
+    fetch("data/antitranslaws_15gap_17gap.geojson") //lots of "State" language which need 2b converted to current context
         .then(function(response){
             return response.json();
     })
@@ -301,7 +301,7 @@ function getData(){
             createPropSymbols(json, attributes);
             createSequenceControls(attributes);
             createLegend(attributes);
-            createTitle();
+            createTitle(); //updated
         
     });  
 };
