@@ -113,7 +113,7 @@ function processData(data){
     //push each attribute name into attributes array
     for (var attribute in properties){
         //only take attributes with population values
-        if (attribute.indexOf("bills") > -1){
+        if (attribute.indexOf("City") > -1){
             attributes.push(attribute);
         };
     };

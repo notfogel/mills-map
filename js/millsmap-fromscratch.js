@@ -8,7 +8,7 @@ function createMap(){
     //adding OSM tilelayerrrrr
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	maxZoom: 19,
-	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Forward/Reverse buttons by Saepul Nahwan, used under CC'}).addTo(map);
+	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
     
     //call the uh, getData fxn
     getData(map);
