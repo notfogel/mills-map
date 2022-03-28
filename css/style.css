@@ -1,0 +1,70 @@
+#map {
+    width: 99%;        
+    height: 550px;
+    display: inline-block;
+}
+
+/*#panel {
+    width: 1%;
+    padding: 20px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    line-height: 42px;
+} */
+
+.sequence-control-container {  
+    width: 350px;  
+    height: 30px;  
+    background-color: rgba(255,255,255,0.8);  
+    padding: 10px;  
+    line-height: 35px;  
+    text-align: start;  
+    border: solid gray 1px;  
+}  
+.legend-control-container {  
+    width: 150px;  
+    height: 200px;  
+    background-color: rgba(255,255,255,0.8);  
+    line-height: 35px;  
+    text-align: center;  
+    font-weight: 600;
+    font-size: 13px;
+    border: solid gray 1px;  
+}  
+
+.range-slider {
+    width: 55%;
+    position: relative;
+    top: -40px;
+}
+
+.step {
+	width: 20%;
+    position: relative;
+    top: -42.5px; 
+}
+
+.step img {
+	width: 90%;
+    height: 35px;
+}
+
+
+#forward {
+    float: right;
+}
+
+#reverse {
+    float: left;
+}
+#affordance {
+    position: relative;
+    top: 10px;
+    left: 85px;
+}
+#my_title {
+    font-size: large;
+    font-weight:400;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
