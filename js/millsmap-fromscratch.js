@@ -3,7 +3,7 @@ function createMap(){
     //the creation of map
     map = L.map('map', {
         center: [44.6344,-89.70972],
-        zoom: 6
+        zoom: 7
     });
     //adding OSM tilelayerrrrr
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -26,6 +26,25 @@ function onEachFeature(feature, layer) {
     };
 };
 
+//I just want a title!!!!
+function createTitle(){
+    L.Control.textbox = L.Control.extend({
+		onAdd: function(map) {
+			
+		var title = L.DomUtil.create('div');
+		title.id = "my_title";
+		title.innerHTML = "<strong>Wisconsin Folksong Collection, 1937-1946  <br> by Sammy Fogel</strong>"
+        
+		return title;
+		},
+        
+		onRemove: function(map) {
+		}
+	});
+	L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
+	L.control.textbox({ position: 'bottomleft' }).addTo(map);
+};
+
 function getData(){
     //load that data!!!
     fetch("data/mills-example-try2.geojson") 
@@ -34,21 +53,21 @@ function getData(){
         })
         .then(function(json){
             var geojsonMarkerOptions = {
-                radius: 8,
+                //radius: 8,
                 fillColor: "#ff7800",
                 color: "#000",
                 weight: 1,
                 opacity: 1,
                 fillOpacity: 0.8
             };
-    
+            createTitle();
             //(in theory) create a geoJSON layer and add it to the map
             L.geoJSON(json, {
                 pointToLayer: function (feature, latlng) {
-                    return L.circleMarker(latlng, geojsonMarkerOptions);
+                    return L.marker(latlng, geojsonMarkerOptions);
                 },        
-                onEachFeature: onEachFeature
-    
+                onEachFeature: onEachFeature 
+                
             }).addTo(map);
         //doin some attribute stuff with arrays or something
         //var attributes = processData(json);
