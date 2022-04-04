@@ -48,9 +48,9 @@ function onEachFeature(feature, layer) {
                 linkz += feature.properties[property];
                 formattedLinkz += "<a href=" + "'" + linkz + "' target='_blank'>click here to see this in the library catalog!" + "</a>";
                 console.log(formattedLinkz)
-                popupContent += "<p>" + property + ": " + formattedLinkz + "</p>";                
+                popupContent += "<p><strong>" + property + ":</strong> " + formattedLinkz + "</p>";                
             }else{
-                popupContent += "<p>" + property + ": " + feature.properties[property] + "</p>";
+                popupContent += "<p><strong>" + property + ":</strong> " + feature.properties[property] + "</p>";
             }
         }
         layer.bindPopup(popupContent);
