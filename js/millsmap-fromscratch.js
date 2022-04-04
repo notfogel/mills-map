@@ -3,11 +3,14 @@ function createMap(){
     //the creation of map
     map = L.map('map', {
         center: [44.6344,-89.70972],
-        zoom: 7
+        zoom: 6.8,
+        zoomSnap: 0.1
+        
     });
     //adding OSM tilelayerrrrr
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	maxZoom: 19,
+	minZoom: 6,
+    maxZoom: 13,
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
     
     //call the uh, getData fxn
