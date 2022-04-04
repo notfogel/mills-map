@@ -17,18 +17,6 @@ function createMap(){
     getData(map);
 };
 
-function onEachFeature(feature, layer) {
-    //no property named popupContent; instead, create html string with all properties
-    var popupContent = "";
-    if (feature.properties) {
-        //loop to add feature property names and values to html string
-        for (var property in feature.properties){
-            popupContent += "<p>" + property + ": " + feature.properties[property] + "</p>";
-        }
-        layer.bindPopup(popupContent);
-    };
-};
-
 //I just want a title!!!!
 function createTitle(){
     L.Control.textbox = L.Control.extend({
@@ -47,10 +35,30 @@ function createTitle(){
 	L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
 	L.control.textbox({ position: 'bottomleft' }).addTo(map);
 };
-
+//populates info into popupcontent 
+function onEachFeature(feature, layer) {
+    //no property named popupContent; instead, create html string with all properties
+    var popupContent = "";
+    var linkz = "";
+    var formattedLinkz = "";
+    if (feature.properties) {
+        //loop to add feature property names and values to html string
+        for (var property in feature.properties){
+            if(property=="Permalink"){
+                linkz += feature.properties[property];
+                formattedLinkz += "<a href=" + "'" + linkz + "' target='_blank'>click here to see this in the library catalog!" + "</a>";
+                console.log(formattedLinkz)
+                popupContent += "<p>" + property + ": " + formattedLinkz + "</p>";                
+            }else{
+                popupContent += "<p>" + property + ": " + feature.properties[property] + "</p>";
+            }
+        }
+        layer.bindPopup(popupContent);
+    };
+};
 function getData(){
     //load that data!!!
-    fetch("data/mills-example-try2.geojson") 
+    fetch("data/mills-example-places.geojson") 
         .then(function(response){
             return response.json();
         })
