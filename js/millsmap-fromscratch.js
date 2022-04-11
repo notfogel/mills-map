@@ -1,4 +1,8 @@
 var map;
+//playing with clustering
+var clustered_markerz = L.markerClusterGroup(); //starting by declaring the clustered ones as a global var
+
+
 function createMap(){
     //the creation of map
     map = L.map('map', {
@@ -35,6 +39,7 @@ function createTitle(){
 	L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
 	L.control.textbox({ position: 'bottomleft' }).addTo(map);
 };
+
 //populates info into popupcontent 
 function onEachFeature(feature, layer) {
     //no property named popupContent; instead, create html string with all properties
@@ -47,7 +52,7 @@ function onEachFeature(feature, layer) {
             if(property=="Permalink"){
                 linkz += feature.properties[property];
                 formattedLinkz += "<a href=" + "'" + linkz + "' target='_blank'>click here to see this in the library catalog!" + "</a>";
-                console.log(formattedLinkz)
+                //console.log(formattedLinkz)
                 popupContent += "<p><strong>" + property + ":</strong> " + formattedLinkz + "</p>";                
             }else{
                 popupContent += "<p><strong>" + property + ":</strong> " + feature.properties[property] + "</p>";
@@ -64,13 +69,14 @@ function getData(){
         })
         .then(function(json){
             var geojsonMarkerOptions = {
-                //radius: 8,
+                
+                radius: 8,
                 fillColor: "#ff7800",
                 color: "#000",
                 weight: 1,
                 opacity: 1,
-                fillOpacity: 0.8
-            };
+                fillOpacity: 0.8 
+            }; 
             createTitle();
             //(in theory) create a geoJSON layer and add it to the map
             L.geoJSON(json, {
