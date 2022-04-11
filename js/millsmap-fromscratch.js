@@ -1,8 +1,5 @@
 var map;
-//playing with clustering
-var clustered_markerz = L.markerClusterGroup(); //starting by declaring the clustered ones as a global var
-
-
+var catalogData;
 function createMap(){
     //the creation of map
     map = L.map('map', {
@@ -79,17 +76,22 @@ function getData(){
             }; 
             createTitle();
             //(in theory) create a geoJSON layer and add it to the map
-            L.geoJSON(json, {
+            var catalogData = L.geoJSON(json, {
                 pointToLayer: function (feature, latlng) {
                     return L.marker(latlng, geojsonMarkerOptions);
                 },        
                 onEachFeature: onEachFeature 
                 
             }).addTo(map);
+            var markers = L.markerClusterGroup().addLayer(catalogData); //starting by declaring the clustered ones as a global var
+            map.addLayer(markers);
+
+
         //doin some attribute stuff with arrays or something
         //var attributes = processData(json);
         //console.log(attributes);
     })
 };
+
 
 document.addEventListener('DOMContentLoaded',createMap)
