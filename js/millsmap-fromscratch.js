@@ -68,7 +68,7 @@ function getData(){
             var geojsonMarkerOptions = {
                 
                 radius: 8,
-                fillColor: "#ff7800",
+                fillColor: "#6ecc39",
                 color: "#000",
                 weight: 1,
                 opacity: 1,
@@ -78,7 +78,7 @@ function getData(){
             //(in theory) create a geoJSON layer and add it to the map
             var catalogData = L.geoJSON(json, {
                 pointToLayer: function (feature, latlng) {
-                    return L.marker(latlng, geojsonMarkerOptions);
+                    return L.circleMarker(latlng, geojsonMarkerOptions);
                 },        
                 onEachFeature: onEachFeature 
                 
