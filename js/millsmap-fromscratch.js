@@ -83,7 +83,10 @@ function getData(){
                 onEachFeature: onEachFeature 
                 
             }).addTo(map);
-            var markers = L.markerClusterGroup().addLayer(catalogData); //starting by declaring the clustered ones as a global var
+            var markers = L.markerClusterGroup({
+                maxClusterRadius: 10 //prevents dells & Madison from being clustered (among other examples)
+            })
+                .addLayer(catalogData); //starting by declaring the clustered ones as a global var
             map.addLayer(markers);
 
 
