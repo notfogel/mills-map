@@ -1,5 +1,6 @@
 var map;
 var catalogData;
+
 function createMap(){
     //the creation of map
     map = L.map('map', {
