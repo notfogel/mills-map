@@ -75,7 +75,8 @@ function getData(){
                 color: "#000",
                 weight: 1,
                 opacity: 1,
-                fillOpacity: 0.8 
+                fillOpacity: 0.8,
+                 
             }; 
             createTitle();
             //(in theory) create a geoJSON layer and add it to the map
@@ -86,15 +87,14 @@ function getData(){
                 onEachFeature: onEachFeature 
                 
             }).addTo(map);
+    
             var markers = L.markerClusterGroup({
                 maxClusterRadius: 10, //prevents dells & Madison from being clustered (among other examples)
-                showCoverageOnHover: true,
-                
-             
+                showCoverageOnHover: true
             })
                 .addLayer(catalogData); //starting by declaring the clustered ones as a global var
             map.addLayer(markers);
-
+            
     })
 };
 
