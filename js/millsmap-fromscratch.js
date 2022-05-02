@@ -52,6 +52,8 @@ function onEachFeature(feature, layer) {
                 formattedLinkz += "<a href=" + "'" + linkz + "' target='_blank'>click here to see this in the library catalog!" + "</a>";
                 //console.log(formattedLinkz)
                 popupContent += "<p><strong>" + property + ":</strong> " + formattedLinkz + "</p>";                
+            }else if(property=="LocalID"){
+                continue
             }else{
                 popupContent += "<p><strong>" + property + ":</strong> " + feature.properties[property] + "</p>";
             }
@@ -61,7 +63,7 @@ function onEachFeature(feature, layer) {
 };
 function getData(){
     //load that data!!!
-    fetch("data/first_go_big_mills_map.geojson") 
+    fetch("data/try2_full_mills_geojson.geojson") 
         .then(function(response){
             return response.json();
         })
@@ -85,15 +87,14 @@ function getData(){
                 
             }).addTo(map);
             var markers = L.markerClusterGroup({
-                maxClusterRadius: 10 //prevents dells & Madison from being clustered (among other examples)
+                maxClusterRadius: 10, //prevents dells & Madison from being clustered (among other examples)
+                showCoverageOnHover: true,
+                
+             
             })
                 .addLayer(catalogData); //starting by declaring the clustered ones as a global var
             map.addLayer(markers);
 
-
-        //doin some attribute stuff with arrays or something
-        //var attributes = processData(json);
-        //console.log(attributes);
     })
 };
 
