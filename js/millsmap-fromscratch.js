@@ -61,7 +61,7 @@ function onEachFeature(feature, layer) {
 };
 function getData(){
     //load that data!!!
-    fetch("data/mills-example-places.geojson") 
+    fetch("data/first_go_big_mills_map.geojson") 
         .then(function(response){
             return response.json();
         })
